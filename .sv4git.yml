@@ -1,0 +1,17 @@
+version: "1.0"
+
+commit-message:
+    types: # Supported commit types.
+        - build
+        - ci
+        - chore
+        - docs
+        - feat
+        - fix
+        - perf
+        - refactor
+        - revert
+        - style
+        - test
+    scope:
+        values: ["configs", "tests", "types", "protected-byte", "protected-short", "protected-int", "protected-long", "protected-float", "protected-double"] 
