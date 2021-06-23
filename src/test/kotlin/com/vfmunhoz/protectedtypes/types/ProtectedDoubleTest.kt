@@ -155,4 +155,97 @@ internal class ProtectedDoubleTest {
         assertEquals(primitiveDouble - primitiveFloat, primitiveDouble - protectedFloat, "primitiveDouble.minus(protectedFloat)")
         assertEquals(primitiveDouble - primitiveDouble, primitiveDouble - protectedDouble, "primitiveDouble.minus(protectedDouble)")
     }
+
+    // Times operator
+    @Test
+    fun `test the times operator for ProtectedDouble times Double and compares the result with the same operation with native Double type`() {
+        assertEquals(primitiveDouble * primitiveByte, (protectedDouble * primitiveByte).value, "protectedDouble.times(primitiveByte)")
+        assertEquals(primitiveDouble * primitiveShort, (protectedDouble * primitiveShort).value, "protectedDouble.times(primitiveShort)")
+        assertEquals(primitiveDouble * primitiveInt, (protectedDouble * primitiveInt).value, "protectedDouble.times(primitiveInt)")
+        assertEquals(primitiveDouble * primitiveLong, (protectedDouble * primitiveLong).value, "protectedDouble.times(primitiveLong)")
+        assertEquals(primitiveDouble * primitiveFloat, (protectedDouble * primitiveFloat).value, "protectedDouble.times(primitiveFloat)")
+        assertEquals(primitiveDouble * primitiveDouble, (protectedDouble * primitiveDouble).value, "protectedDouble.times(primitiveDouble)")
+    }
+
+    @Test
+    fun `test the times operator for ProtectedDouble times ProtectedDouble and compares the result with the same operation with native Double type`() {
+        assertEquals(primitiveDouble * primitiveByte, (protectedDouble * protectedByte).value, "protectedDouble.times(protectedByte)")
+        assertEquals(primitiveDouble * primitiveShort, (protectedDouble * protectedShort).value, "protectedDouble.times(protectedShort)")
+        assertEquals(primitiveDouble * primitiveInt, (protectedDouble * protectedInt).value, "protectedDouble.times(protectedInt)")
+        assertEquals(primitiveDouble * primitiveLong, (protectedDouble * protectedLong).value, "protectedDouble.times(protectedLong)")
+        assertEquals(primitiveDouble * primitiveFloat, (protectedDouble * protectedFloat).value, "protectedDouble.times(protectedFloat)")
+        assertEquals(primitiveDouble * primitiveDouble, (protectedDouble * protectedDouble).value, "protectedDouble.times(protectedDouble)")
+    }
+
+    @Test
+    fun `test the times operator for Double times ProtectedDouble and compares the result with the same operation with native Double type`() {
+        assertEquals(primitiveDouble * primitiveByte, primitiveDouble * protectedByte, "primitiveByte.times(protectedByte)")
+        assertEquals(primitiveDouble * primitiveShort, primitiveDouble * protectedShort, "primitiveDouble.times(protectedShort)")
+        assertEquals(primitiveDouble * primitiveInt, primitiveDouble * protectedInt, "primitiveDouble.times(protectedInt)")
+        assertEquals(primitiveDouble * primitiveLong, primitiveDouble * protectedLong, "primitiveDouble.times(protectedLong)")
+        assertEquals(primitiveDouble * primitiveFloat, primitiveDouble * protectedFloat, "primitiveDouble.times(protectedFloat)")
+        assertEquals(primitiveDouble * primitiveDouble, primitiveDouble * protectedDouble, "primitiveDouble.times(protectedDouble)")
+    }
+
+    // Div operator
+    @Test
+    fun `test the div operator for ProtectedDouble div Double and compares the result with the same operation with native Double type`() {
+        assertEquals(primitiveDouble / primitiveByte, (protectedDouble / primitiveByte).value, "protectedDouble.div(primitiveByte)")
+        assertEquals(primitiveDouble / primitiveShort, (protectedDouble / primitiveShort).value, "protectedDouble.div(primitiveShort)")
+        assertEquals(primitiveDouble / primitiveInt, (protectedDouble / primitiveInt).value, "protectedDouble.div(primitiveInt)")
+        assertEquals(primitiveDouble / primitiveLong, (protectedDouble / primitiveLong).value, "protectedDouble.div(primitiveLong)")
+        assertEquals(primitiveDouble / primitiveFloat, (protectedDouble / primitiveFloat).value, "protectedDouble.div(primitiveFloat)")
+        assertEquals(primitiveDouble / primitiveDouble, (protectedDouble / primitiveDouble).value, "protectedDouble.div(primitiveDouble)")
+    }
+
+    @Test
+    fun `test the div operator for ProtectedDouble div ProtectedDouble and compares the result with the same operation with native Double type`() {
+        assertEquals(primitiveDouble / primitiveByte, (protectedDouble / protectedByte).value, "protectedDouble.div(protectedByte)")
+        assertEquals(primitiveDouble / primitiveShort, (protectedDouble / protectedShort).value, "protectedDouble.div(protectedShort)")
+        assertEquals(primitiveDouble / primitiveInt, (protectedDouble / protectedInt).value, "protectedDouble.div(protectedInt)")
+        assertEquals(primitiveDouble / primitiveLong, (protectedDouble / protectedLong).value, "protectedDouble.div(protectedLong)")
+        assertEquals(primitiveDouble / primitiveFloat, (protectedDouble / protectedFloat).value, "protectedDouble.div(protectedFloat)")
+        assertEquals(primitiveDouble / primitiveDouble, (protectedDouble / protectedDouble).value, "protectedDouble.div(protectedDouble)")
+    }
+
+    @Test
+    fun `test the div operator for Double div ProtectedDouble and compares the result with the same operation with native Double type`() {
+        assertEquals(primitiveDouble / primitiveByte, primitiveDouble / protectedByte, "primitiveByte.div(protectedByte)")
+        assertEquals(primitiveDouble / primitiveShort, primitiveDouble / protectedShort, "primitiveDouble.div(protectedShort)")
+        assertEquals(primitiveDouble / primitiveInt, primitiveDouble / protectedInt, "primitiveDouble.div(protectedInt)")
+        assertEquals(primitiveDouble / primitiveLong, primitiveDouble / protectedLong, "primitiveDouble.div(protectedLong)")
+        assertEquals(primitiveDouble / primitiveFloat, primitiveDouble / protectedFloat, "primitiveDouble.div(protectedFloat)")
+        assertEquals(primitiveDouble / primitiveDouble, primitiveDouble / protectedDouble, "primitiveDouble.div(protectedDouble)")
+    }
+
+    // Rem operator
+    @Test
+    fun `test the rem operator for ProtectedDouble rem Double and compares the result with the same operation with native Double type`() {
+        assertEquals(primitiveDouble % primitiveByte, (protectedDouble % primitiveByte).value, "protectedDouble.rem(primitiveByte)")
+        assertEquals(primitiveDouble % primitiveShort, (protectedDouble % primitiveShort).value, "protectedDouble.rem(primitiveShort)")
+        assertEquals(primitiveDouble % primitiveInt, (protectedDouble % primitiveInt).value, "protectedDouble.rem(primitiveInt)")
+        assertEquals(primitiveDouble % primitiveLong, (protectedDouble % primitiveLong).value, "protectedDouble.rem(primitiveLong)")
+        assertEquals(primitiveDouble % primitiveFloat, (protectedDouble % primitiveFloat).value, "protectedDouble.rem(primitiveFloat)")
+        assertEquals(primitiveDouble % primitiveDouble, (protectedDouble % primitiveDouble).value, "protectedDouble.rem(primitiveDouble)")
+    }
+
+    @Test
+    fun `test the rem operator for ProtectedDouble rem ProtectedDouble and compares the result with the same operation with native Double type`() {
+        assertEquals(primitiveDouble % primitiveByte, (protectedDouble % protectedByte).value, "protectedDouble.rem(protectedByte)")
+        assertEquals(primitiveDouble % primitiveShort, (protectedDouble % protectedShort).value, "protectedDouble.rem(protectedShort)")
+        assertEquals(primitiveDouble % primitiveInt, (protectedDouble % protectedInt).value, "protectedDouble.rem(protectedInt)")
+        assertEquals(primitiveDouble % primitiveLong, (protectedDouble % protectedLong).value, "protectedDouble.rem(protectedLong)")
+        assertEquals(primitiveDouble % primitiveFloat, (protectedDouble % protectedFloat).value, "protectedDouble.rem(protectedFloat)")
+        assertEquals(primitiveDouble % primitiveDouble, (protectedDouble % protectedDouble).value, "protectedDouble.rem(protectedDouble)")
+    }
+
+    @Test
+    fun `test the rem operator for Double rem ProtectedDouble and compares the result with the same operation with native Double type`() {
+        assertEquals(primitiveDouble % primitiveByte, primitiveDouble % protectedByte, "primitiveByte.rem(protectedByte)")
+        assertEquals(primitiveDouble % primitiveShort, primitiveDouble % protectedShort, "primitiveDouble.rem(protectedShort)")
+        assertEquals(primitiveDouble % primitiveInt, primitiveDouble % protectedInt, "primitiveDouble.rem(protectedInt)")
+        assertEquals(primitiveDouble % primitiveLong, primitiveDouble % protectedLong, "primitiveDouble.rem(protectedLong)")
+        assertEquals(primitiveDouble % primitiveFloat, primitiveDouble % protectedFloat, "primitiveDouble.rem(protectedFloat)")
+        assertEquals(primitiveDouble % primitiveDouble, primitiveDouble % protectedDouble, "primitiveDouble.rem(protectedDouble)")
+    }
 }

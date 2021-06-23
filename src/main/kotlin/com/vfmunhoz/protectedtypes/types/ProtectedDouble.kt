@@ -48,6 +48,13 @@ value class ProtectedDouble(val value: Double) : Comparable<ProtectedDouble> {
     operator fun times(other: Float): ProtectedDouble = ProtectedDouble(value * other)
     operator fun times(other: Double): ProtectedDouble = ProtectedDouble(value * other)
 
+    operator fun times(other: ProtectedByte): ProtectedDouble = this.times(other.value)
+    operator fun times(other: ProtectedShort): ProtectedDouble = this.times(other.value)
+    operator fun times(other: ProtectedInt): ProtectedDouble = this.times(other.value)
+    operator fun times(other: ProtectedLong): ProtectedDouble = this.times(other.value)
+    operator fun times(other: ProtectedFloat): ProtectedDouble = this.times(other.value)
+    operator fun times(other: ProtectedDouble): ProtectedDouble = this.times(other.value)
+
     // Div
     operator fun div(other: Byte): ProtectedDouble = ProtectedDouble(value / other)
     operator fun div(other: Short): ProtectedDouble = ProtectedDouble(value / other)
@@ -56,6 +63,13 @@ value class ProtectedDouble(val value: Double) : Comparable<ProtectedDouble> {
     operator fun div(other: Float): ProtectedDouble = ProtectedDouble(value / other)
     operator fun div(other: Double): ProtectedDouble = ProtectedDouble(value / other)
 
+    operator fun div(other: ProtectedByte): ProtectedDouble = this.div(other.value)
+    operator fun div(other: ProtectedShort): ProtectedDouble = this.div(other.value)
+    operator fun div(other: ProtectedInt): ProtectedDouble = this.div(other.value)
+    operator fun div(other: ProtectedLong): ProtectedDouble = this.div(other.value)
+    operator fun div(other: ProtectedFloat): ProtectedDouble = this.div(other.value)
+    operator fun div(other: ProtectedDouble): ProtectedDouble = this.div(other.value)
+
     // Rem
     operator fun rem(other: Byte): ProtectedDouble = ProtectedDouble(value % other)
     operator fun rem(other: Short): ProtectedDouble = ProtectedDouble(value % other)
@@ -63,6 +77,13 @@ value class ProtectedDouble(val value: Double) : Comparable<ProtectedDouble> {
     operator fun rem(other: Long): ProtectedDouble = ProtectedDouble(value % other)
     operator fun rem(other: Float): ProtectedDouble = ProtectedDouble(value % other)
     operator fun rem(other: Double): ProtectedDouble = ProtectedDouble(value % other)
+
+    operator fun rem(other: ProtectedByte): ProtectedDouble = this.rem(other.value)
+    operator fun rem(other: ProtectedShort): ProtectedDouble = this.rem(other.value)
+    operator fun rem(other: ProtectedInt): ProtectedDouble = this.rem(other.value)
+    operator fun rem(other: ProtectedLong): ProtectedDouble = this.rem(other.value)
+    operator fun rem(other: ProtectedFloat): ProtectedDouble = this.rem(other.value)
+    operator fun rem(other: ProtectedDouble): ProtectedDouble = this.rem(other.value)
 
     operator fun compareTo(other: Double): Int = value.compareTo(other)
     override operator fun compareTo(other: ProtectedDouble): Int = compareTo(other.value)
@@ -85,3 +106,27 @@ operator fun Double.minus(protectedValue: ProtectedInt): Double = this - protect
 operator fun Double.minus(protectedValue: ProtectedLong): Double = this - protectedValue.value
 operator fun Double.minus(protectedValue: ProtectedFloat): Double = this - protectedValue.value
 operator fun Double.minus(protectedValue: ProtectedDouble): Double = this - protectedValue.value
+
+// Primitive * protected
+operator fun Double.times(protectedValue: ProtectedByte): Double = this * protectedValue.value
+operator fun Double.times(protectedValue: ProtectedShort): Double = this * protectedValue.value
+operator fun Double.times(protectedValue: ProtectedInt): Double = this * protectedValue.value
+operator fun Double.times(protectedValue: ProtectedLong): Double = this * protectedValue.value
+operator fun Double.times(protectedValue: ProtectedFloat): Double = this * protectedValue.value
+operator fun Double.times(protectedValue: ProtectedDouble): Double = this * protectedValue.value
+
+// Primitive / protected
+operator fun Double.div(protectedValue: ProtectedByte): Double = this / protectedValue.value
+operator fun Double.div(protectedValue: ProtectedShort): Double = this / protectedValue.value
+operator fun Double.div(protectedValue: ProtectedInt): Double = this / protectedValue.value
+operator fun Double.div(protectedValue: ProtectedLong): Double = this / protectedValue.value
+operator fun Double.div(protectedValue: ProtectedFloat): Double = this / protectedValue.value
+operator fun Double.div(protectedValue: ProtectedDouble): Double = this / protectedValue.value
+
+// Primitive % protected
+operator fun Double.rem(protectedValue: ProtectedByte): Double = this % protectedValue.value
+operator fun Double.rem(protectedValue: ProtectedShort): Double = this % protectedValue.value
+operator fun Double.rem(protectedValue: ProtectedInt): Double = this % protectedValue.value
+operator fun Double.rem(protectedValue: ProtectedLong): Double = this % protectedValue.value
+operator fun Double.rem(protectedValue: ProtectedFloat): Double = this % protectedValue.value
+operator fun Double.rem(protectedValue: ProtectedDouble): Double = this % protectedValue.value
