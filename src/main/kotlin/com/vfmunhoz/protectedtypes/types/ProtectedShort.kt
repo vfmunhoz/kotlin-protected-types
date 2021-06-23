@@ -54,11 +54,3 @@ value class ProtectedShort(val value: Short) : Comparable<ProtectedShort> {
 
     override fun toString(): String = "###$value###"
 }
-
-
-fun main() {
-    var short = Short.MAX_VALUE
-    println(short)
-    short++
-    println(short)
-}
