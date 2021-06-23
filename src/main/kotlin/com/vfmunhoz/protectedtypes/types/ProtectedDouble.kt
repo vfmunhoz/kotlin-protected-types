@@ -1,0 +1,56 @@
+package com.vfmunhoz.protectedtypes.types
+
+@JvmInline
+value class ProtectedDouble(val value: Double) : Comparable<ProtectedDouble> {
+
+    operator fun unaryPlus(): ProtectedDouble = ProtectedDouble(value.unaryPlus())
+    operator fun unaryMinus(): ProtectedDouble = ProtectedDouble(value.unaryMinus())
+
+    operator fun inc(): ProtectedDouble = ProtectedDouble(value.inc())
+    operator fun dec(): ProtectedDouble = ProtectedDouble(value.dec())
+
+    // Plus
+    operator fun plus(other: Byte): ProtectedDouble = ProtectedDouble(value + other)
+    operator fun plus(other: Short): ProtectedDouble = ProtectedDouble(value + other)
+    operator fun plus(other: Int): ProtectedDouble = ProtectedDouble(value + other)
+    operator fun plus(other: Long): ProtectedDouble = ProtectedDouble(value + other)
+    operator fun plus(other: Float): ProtectedDouble = ProtectedDouble(value + other)
+    operator fun plus(other: Double): ProtectedDouble = ProtectedDouble(value + other)
+
+    // Minus
+    operator fun minus(other: Byte): ProtectedDouble = ProtectedDouble(value - other)
+    operator fun minus(other: Short): ProtectedDouble = ProtectedDouble(value - other)
+    operator fun minus(other: Int): ProtectedDouble = ProtectedDouble(value - other)
+    operator fun minus(other: Long): ProtectedDouble = ProtectedDouble(value - other)
+    operator fun minus(other: Float): ProtectedDouble = ProtectedDouble(value - other)
+    operator fun minus(other: Double): ProtectedDouble = ProtectedDouble(value - other)
+
+    // Times
+    operator fun times(other: Byte): ProtectedDouble = ProtectedDouble(value * other)
+    operator fun times(other: Short): ProtectedDouble = ProtectedDouble(value * other)
+    operator fun times(other: Int): ProtectedDouble = ProtectedDouble(value * other)
+    operator fun times(other: Long): ProtectedDouble = ProtectedDouble(value * other)
+    operator fun times(other: Float): ProtectedDouble = ProtectedDouble(value * other)
+    operator fun times(other: Double): ProtectedDouble = ProtectedDouble(value * other)
+
+    // Div
+    operator fun div(other: Byte): ProtectedDouble = ProtectedDouble(value / other)
+    operator fun div(other: Short): ProtectedDouble = ProtectedDouble(value / other)
+    operator fun div(other: Int): ProtectedDouble = ProtectedDouble(value / other)
+    operator fun div(other: Long): ProtectedDouble = ProtectedDouble(value / other)
+    operator fun div(other: Float): ProtectedDouble = ProtectedDouble(value / other)
+    operator fun div(other: Double): ProtectedDouble = ProtectedDouble(value / other)
+
+    // Rem
+    operator fun rem(other: Byte): ProtectedDouble = ProtectedDouble(value % other)
+    operator fun rem(other: Short): ProtectedDouble = ProtectedDouble(value % other)
+    operator fun rem(other: Int): ProtectedDouble = ProtectedDouble(value % other)
+    operator fun rem(other: Long): ProtectedDouble = ProtectedDouble(value % other)
+    operator fun rem(other: Float): ProtectedDouble = ProtectedDouble(value % other)
+    operator fun rem(other: Double): ProtectedDouble = ProtectedDouble(value % other)
+
+    operator fun compareTo(other: Double): Int = value.compareTo(other)
+    override operator fun compareTo(other: ProtectedDouble): Int = compareTo(other.value)
+
+    override fun toString(): String = "###$value###"
+}
