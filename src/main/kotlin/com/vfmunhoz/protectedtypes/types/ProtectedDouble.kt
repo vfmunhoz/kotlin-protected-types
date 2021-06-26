@@ -9,7 +9,7 @@ value class ProtectedDouble(val value: Double) : Comparable<ProtectedDouble> {
     operator fun inc(): ProtectedDouble = ProtectedDouble(value.inc())
     operator fun dec(): ProtectedDouble = ProtectedDouble(value.dec())
 
-    // Plus primitive
+    // Plus
     operator fun plus(other: Byte): ProtectedDouble = ProtectedDouble(value + other)
     operator fun plus(other: Short): ProtectedDouble = ProtectedDouble(value + other)
     operator fun plus(other: Int): ProtectedDouble = ProtectedDouble(value + other)
@@ -17,7 +17,6 @@ value class ProtectedDouble(val value: Double) : Comparable<ProtectedDouble> {
     operator fun plus(other: Float): ProtectedDouble = ProtectedDouble(value + other)
     operator fun plus(other: Double): ProtectedDouble = ProtectedDouble(value + other)
 
-    // Plus Protected
     operator fun plus(other: ProtectedByte): ProtectedDouble = this.plus(other.value)
     operator fun plus(other: ProtectedShort): ProtectedDouble = this.plus(other.value)
     operator fun plus(other: ProtectedInt): ProtectedDouble = this.plus(other.value)
