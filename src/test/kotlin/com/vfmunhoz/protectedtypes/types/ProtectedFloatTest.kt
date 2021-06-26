@@ -116,7 +116,7 @@ internal class ProtectedFloatTest {
     }
 
     @Test
-    fun `test the sum operator for primitive Float + protected value and compares the result with the same operation with native Float type`() {
+    fun `test the sum operator for primitive value + protected value and compares the result with the same operation with native Float type`() {
         assertEquals(primitiveFloat + primitiveByte, primitiveFloat + protectedByte, "primitiveFloat.sum(protectedByte)")
         assertEquals(primitiveFloat + primitiveShort, primitiveFloat + protectedShort, "primitiveFloat.sum(protectedShort)")
         assertEquals(primitiveFloat + primitiveInt, primitiveFloat + protectedInt, "primitiveFloat.sum(protectedInt)")
@@ -147,7 +147,7 @@ internal class ProtectedFloatTest {
     }
 
     @Test
-    fun `test the minus operator for primitive Float - protected value and compares the result with the same operation with native Float type`() {
+    fun `test the minus operator for primitive value - protected value and compares the result with the same operation with native Float type`() {
         assertEquals(primitiveFloat - primitiveByte, primitiveFloat - protectedByte, "primitiveFloat.minus(protectedByte)")
         assertEquals(primitiveFloat - primitiveShort, primitiveFloat - protectedShort, "primitiveFloat.minus(protectedShort)")
         assertEquals(primitiveFloat - primitiveInt, primitiveFloat - protectedInt, "primitiveFloat.minus(protectedInt)")
