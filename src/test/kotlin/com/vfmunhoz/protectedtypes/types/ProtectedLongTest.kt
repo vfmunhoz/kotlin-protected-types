@@ -50,8 +50,8 @@ internal class ProtectedLongTest {
     // Increment and decrement operators
     @Test
     fun `test the increment operator compared to Long type`() {
-        var mutablePrimitive = primitiveFloat
-        var mutableProtected = protectedFloat
+        var mutablePrimitive = primitiveLong
+        var mutableProtected = protectedLong
 
         ++mutablePrimitive
         ++mutableProtected
@@ -73,8 +73,8 @@ internal class ProtectedLongTest {
 
     @Test
     fun `test the decrement operator compared to Long type`() {
-        var mutablePrimitive = primitiveFloat
-        var mutableProtected = protectedFloat
+        var mutablePrimitive = primitiveLong
+        var mutableProtected = protectedLong
 
         --mutablePrimitive
         --mutableProtected
