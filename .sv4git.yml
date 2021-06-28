@@ -14,4 +14,15 @@ commit-message:
         - style
         - test
     scope:
-        values: ["configs", "tests", "types", "protected-byte", "protected-short", "protected-int", "protected-long", "protected-float", "protected-double"] 
+        values: [
+             "configs",
+             "extensions"
+             "types",
+             "protected-byte",
+             "protected-short",
+             "protected-int",
+             "protected-long",
+             "protected-float",
+             "protected-double",
+             "tests",
+        ]

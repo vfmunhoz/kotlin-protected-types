@@ -1,5 +1,7 @@
 package com.vfmunhoz.protectedtypes.types
 
+import com.vfmunhoz.protectedtypes.extensions.obfuscate
+
 @JvmInline
 value class ProtectedByte(val value: Byte) : Comparable<ProtectedByte> {
 
@@ -87,7 +89,7 @@ value class ProtectedByte(val value: Byte) : Comparable<ProtectedByte> {
     operator fun compareTo(other: Byte): Int = value.compareTo(other)
     override operator fun compareTo(other: ProtectedByte): Int = compareTo(other.value)
 
-    override fun toString(): String = "###$value###"
+    override fun toString(): String = value.obfuscate()
 }
 
 // Primitive + protected

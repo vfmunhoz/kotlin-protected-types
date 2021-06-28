@@ -1,5 +1,7 @@
 package com.vfmunhoz.protectedtypes.types
 
+import com.vfmunhoz.protectedtypes.extensions.obfuscate
+
 @JvmInline
 value class ProtectedLong(val value: Long) : Comparable<ProtectedLong> {
 
@@ -87,7 +89,7 @@ value class ProtectedLong(val value: Long) : Comparable<ProtectedLong> {
     operator fun compareTo(other: Long): Int = value.compareTo(other)
     override operator fun compareTo(other: ProtectedLong): Int = compareTo(other.value)
 
-    override fun toString(): String = "###$value###"
+    override fun toString(): String = value.obfuscate()
 }
 
 // Primitive + protected

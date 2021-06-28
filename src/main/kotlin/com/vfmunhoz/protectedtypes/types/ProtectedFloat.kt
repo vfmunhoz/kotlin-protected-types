@@ -1,5 +1,7 @@
 package com.vfmunhoz.protectedtypes.types
 
+import com.vfmunhoz.protectedtypes.extensions.obfuscate
+
 @JvmInline
 value class ProtectedFloat(val value: Float) : Comparable<ProtectedFloat> {
 
@@ -87,7 +89,7 @@ value class ProtectedFloat(val value: Float) : Comparable<ProtectedFloat> {
     operator fun compareTo(other: Float): Int = value.compareTo(other)
     override operator fun compareTo(other: ProtectedFloat): Int = compareTo(other.value)
 
-    override fun toString(): String = "###$value###"
+    override fun toString(): String = value.obfuscate()
 }
 
 // Primitive + protected
