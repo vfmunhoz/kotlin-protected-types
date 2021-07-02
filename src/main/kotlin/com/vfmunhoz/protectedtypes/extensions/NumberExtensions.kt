@@ -11,7 +11,3 @@ fun Number.obfuscate(): String = toString().let {
         else -> it.replaceFrom(from, to, "#", setOf('-'))
     }
 }
-
-fun main() {
-    print(100123.1456f)
-}
