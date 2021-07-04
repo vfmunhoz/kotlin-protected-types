@@ -5,7 +5,8 @@ import com.vfmunhoz.protectedtypes.extensions.replaceFrom
 class ProtectedString(
     val value: String,
     private val splitToken: String? = null,
-    private val replaceToken: String = "*"
+    private val replaceToken: String = "*",
+    private val ignores: Set<Char> = emptySet()
 ) : Comparable<ProtectedString> {
 
     operator fun plus(other: String): ProtectedString = ProtectedString(value + other)
@@ -25,7 +26,7 @@ class ProtectedString(
         builder.toString().trim()
     }
 
-    private fun maskValue(valueToMask: String, start: Int, end: Int): String = valueToMask.replaceFrom(start, end, replaceToken)
+    private fun maskValue(valueToMask: String, start: Int, end: Int): String = valueToMask.replaceFrom(start, end, replaceToken, ignores)
 
     override fun equals(other: Any?): Boolean = value == when(other) {
         is ProtectedString -> other.value
