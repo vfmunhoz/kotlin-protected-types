@@ -24,5 +24,6 @@ commit-message:
              "protected-long",
              "protected-float",
              "protected-double",
+             "protected-string",
              "tests"
         ]

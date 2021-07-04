@@ -2,24 +2,39 @@ package com.vfmunhoz.protectedtypes.types
 
 import com.vfmunhoz.protectedtypes.extensions.replaceFrom
 
-@JvmInline
-value class ProtectedString(val value: String) : Comparable<ProtectedString> {
+class ProtectedString(
+    val value: String,
+    private val splitToken: String? = null,
+    private val replaceToken: String = "*"
+) : Comparable<ProtectedString> {
 
-    companion object {
-        private const val SPLIT_TOKEN = " "
-        private const val REPLACE_TOKEN = "*"
-    }
+    operator fun plus(other: String): ProtectedString = ProtectedString(value + other)
 
-    override fun toString(): String {
-        val builder = StringBuilder()
+    operator fun plus(other: ProtectedString): ProtectedString = plus(other.value)
 
-        value.split(SPLIT_TOKEN).forEach { slice ->
-            builder.append(SPLIT_TOKEN)
-            builder.append(slice.replaceFrom(slice.length / 2, slice.length - 1, REPLACE_TOKEN))
+    override fun toString(): String =
+        if(splitToken.isNullOrEmpty()) { maskValue(value, value.length / 2, value.length - 1) }
+        else { maskWithSplit() }
+
+    private fun maskWithSplit() = StringBuilder().let { builder ->
+        value.split(splitToken!!).forEach { slice ->
+            builder.append(splitToken)
+            builder.append(maskValue(slice, slice.length / 2, slice.length - 1))
         }
 
-        return builder.toString().trim()
+        builder.toString().trim()
     }
+
+    private fun maskValue(valueToMask: String, start: Int, end: Int): String = valueToMask.replaceFrom(start, end, replaceToken)
+
+    override fun equals(other: Any?): Boolean = value == when(other) {
+        is ProtectedString -> other.value
+        else -> other
+    }
+
+    override fun hashCode(): Int = value.hashCode()
 
     override fun compareTo(other: ProtectedString): Int = value.compareTo(other.value)
 }
+
+fun String.toProtected() = ProtectedString(this)
