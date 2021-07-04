@@ -9,7 +9,7 @@ class ProtectedString(
     private val ignores: Set<Char> = emptySet()
 ) : Comparable<ProtectedString> {
 
-    operator fun plus(other: String): ProtectedString = ProtectedString(value + other)
+    operator fun plus(other: String): ProtectedString = ProtectedString(value + other, splitToken, replaceToken, ignores)
 
     operator fun plus(other: ProtectedString): ProtectedString = plus(other.value)
 
