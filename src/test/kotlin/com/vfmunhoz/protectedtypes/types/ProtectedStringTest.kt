@@ -67,4 +67,18 @@ internal class ProtectedStringTest {
 
         assertEquals(obfuscatedString, protectedStringIgnoring.toString())
     }
+
+    @Test
+    fun `creates a protected string and prints its value with a separator`() {
+        val testString = "Hello ProtectedTypes!"
+        val protectedString = ProtectedString(testString, " ")
+
+        val builder = StringBuilder()
+        testString.split(" ").forEach {
+            builder.append(" ")
+            builder.append(it.replaceFrom(it.length / 2, it.length - 1, "*"))
+        }
+
+        assertEquals(builder.toString().trim(), protectedString.toString())
+    }
 }
