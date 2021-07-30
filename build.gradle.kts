@@ -18,3 +18,9 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+// Suppressing test compile warnings since we intentionally
+// cause an overflow on arithmetic operation for integer types.
+tasks.compileTestKotlin {
+    kotlinOptions.suppressWarnings = true
+}
