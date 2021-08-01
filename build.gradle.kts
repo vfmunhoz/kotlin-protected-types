@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm").version("1.5.21")
+    `maven-publish`
 }
 
 group = "com.vfmunhoz"
