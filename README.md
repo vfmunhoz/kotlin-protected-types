@@ -4,7 +4,7 @@ Unintentionally having personal data making it's way to application's log,  may 
 
 Considering the possible scenarios to avoid personal data from being logged and sent to observability tools, it's feasible to change the data before outputting it to the log appender just by overriding the `toString()` calls from fields with personal data.
 
-Although creating custom wrapper types for primitives and creating your `toString()` implementation solves the personal data logging issue, it's extremely annoying for any developer having to worry about casts everytime an operation has to be performed. But since the release of Kotlin 1.5 it's possible to work with the primitives without actually having to add cast operations everywhere!
+Although creating custom wrapper types for primitives and creating your `toString()` implementation solves the personal data logging issue, it's extremely annoying for any developer having to worry about casts everytime an operation has to be performed. But since the release of Kotlin 1.5 it's possible to work with the primitive wrappers without actually having to add cast operations everywhere!
 
 ## How it works
 
@@ -12,10 +12,104 @@ The `protected-types` library creates wrappers for all Kotlin's primitive types,
 
 With the [inline classes](https://kotlinlang.org/docs/inline-classes.html) it's possible to work with the wrappers as if they were the real native types but with it's `toString()` methods overloaded.
 
-The [inline classes](https://kotlinlang.org/docs/inline-classes.html) were relased on `Kotlin 1.5.0` and it has being heavily discussed [here](https://github.com/Kotlin/KEEP/issues/237). 
+The [inline classes](https://kotlinlang.org/docs/inline-classes.html) were relased on `Kotlin 1.5.0` so you won't be able to use it with older Kotlin versions. 
 
-> *Note:* Wasn't implemented all the possibilities discussed on Kotlin's value classes design notes on Kotlin 1.5.0.
+> *Note:* The inline classes functionalities are being heavily discussed [here](https://github.com/Kotlin/KEEP/issues/237).
 
 ## How to use
 
-The library has been designed to have the smallest impact 
+The library has been designed to have the smallest impact on your code, most of the time it should be seamless the usage of the `protected-types` on your code.
+
+### Integer Types
+
+There's a wrapper for every integer type available and the `protected-types` makes sure the behavior during the computations is the same as [Kotlin's numeric types](https://kotlinlang.org/docs/basic-types.html).
+
+The integer wrappers are:
+
+- ProtectedByte
+- ProtectedShort
+- ProtectedInt
+- ProtectedLong
+
+### Float Types
+
+The floating wrappers are:
+
+- ProtectedFloat
+- Protected Double
+
+### String Type
+
+For strings the library doesn't follow the same principle as for numeric wrappers using [inline classes](https://kotlinlang.org/docs/inline-classes.html), this decision has been made considering that up to this moment the support to have functions with the same name as the original value class in use is still in discussion for future releases.
+
+Since we don't have an [inline class](https://kotlinlang.org/docs/inline-classes.html) implementing the wrapper it was possible to add more functionalities to customize the printed value for any protected string.
+
+The simplest use should be the simple conversion to `ProtectedString` wrapper.
+
+```kotlin
+fun main() {
+    val myString: ProtectedString = "Hello ProtectedTypes!".toProtected()
+
+    println(myString)
+}
+``` 
+
+The result of this execution should be a partially protected string printed:
+
+```text
+Hello Prot***********
+```
+
+Note that the default character to obfuscate the value is `*` and the algorithm replaces half of the original value.
+
+It's possible to change the default character and provide a split token if you want to customize the obfuscation.
+
+```kotlin
+fun main() {
+    val splitToken = " "
+    val replaceToken = "#"
+
+    val myString = ProtectedString("Hello ProtectedTypes!", splitToken, replaceToken)
+
+    println(myString)
+}
+``` 
+
+Now the printed value should be:
+
+```text
+He### Protect########
+```
+
+It's also possible to set a custom chars list to ignore during the obfuscation.
+
+```kotlin
+fun main() {
+    val myString = ProtectedString(value = "Hello ProtectedTypes!", ignores = setOf('!'))
+
+    println(myString)
+}
+``` 
+
+Ignoring the `!` character inside the string the execution produces the following result.
+
+```text
+Hello Prot**********!
+```
+
+The `equals()`, `hashCode()` and `compareTo()` works delegating the logic to the actual `String` type.
+
+#### ProtectedString concat
+
+It's possible to concat a `ProtectedString` with either another `ProtectedString` or a `String` using the `+` operator.
+
+```kotlin
+fun main() {
+    val helloString = "Hello ".toProtected()
+    val myString = helloString + "ProtectedString!"
+
+    println(myString)
+}
+```
+
+> *Note:* The custom values for `splitToken`, `replaceToken` and `ignores` from the first `ProtectedString` will be propagated to the concat result.
