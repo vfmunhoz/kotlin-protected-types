@@ -92,6 +92,8 @@ value class ProtectedFloat(val value: Float) : Comparable<ProtectedFloat> {
     override fun toString(): String = value.obfuscate()
 }
 
+fun Float.toProtected() = ProtectedFloat(this)
+
 // Primitive + protected
 operator fun Float.plus(protectedValue: ProtectedByte): Float = this + protectedValue.value
 operator fun Float.plus(protectedValue: ProtectedShort): Float = this + protectedValue.value

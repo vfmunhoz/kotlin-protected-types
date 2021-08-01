@@ -2,6 +2,7 @@ package com.vfmunhoz.protectedtypes.types
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertIs
 
 internal class ProtectedLongTest {
 
@@ -21,6 +22,11 @@ internal class ProtectedLongTest {
 
     private val maxProtectedLong = ProtectedLong(Long.MAX_VALUE)
     private val minProtectedLong = ProtectedLong(Long.MIN_VALUE)
+
+    @Test
+    fun `validates the transformation to protected value`() {
+        assertIs<ProtectedLong>(primitiveLong.toProtected())
+    }
 
     // Unary operators
     @Test

@@ -92,6 +92,8 @@ value class ProtectedInt(val value: Int) : Comparable<ProtectedInt> {
     override fun toString(): String = value.obfuscate()
 }
 
+fun Int.toProtected() = ProtectedInt(this)
+
 // Primitive + protected
 operator fun Int.plus(protectedValue: ProtectedByte): Int = this + protectedValue.value
 operator fun Int.plus(protectedValue: ProtectedShort): Int = this + protectedValue.value

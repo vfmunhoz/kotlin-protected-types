@@ -2,6 +2,7 @@ package com.vfmunhoz.protectedtypes.types
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertIs
 
 internal class ProtectedByteTest {
 
@@ -21,6 +22,11 @@ internal class ProtectedByteTest {
 
     private val maxProtected = ProtectedByte(Byte.MAX_VALUE)
     private val minProtected = ProtectedByte(Byte.MIN_VALUE)
+
+    @Test
+    fun `validates the transformation to protected value`() {
+        assertIs<ProtectedByte>(primitiveByte.toProtected())
+    }
 
     // Unary operators
     @Test

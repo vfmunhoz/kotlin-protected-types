@@ -92,6 +92,8 @@ value class ProtectedLong(val value: Long) : Comparable<ProtectedLong> {
     override fun toString(): String = value.obfuscate()
 }
 
+fun Long.toProtected() = ProtectedLong(this)
+
 // Primitive + protected
 operator fun Long.plus(protectedValue: ProtectedByte): Long = this + protectedValue.value
 operator fun Long.plus(protectedValue: ProtectedShort): Long = this + protectedValue.value

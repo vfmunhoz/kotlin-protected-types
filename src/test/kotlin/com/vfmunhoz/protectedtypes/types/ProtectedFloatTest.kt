@@ -2,6 +2,7 @@ package com.vfmunhoz.protectedtypes.types
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertIs
 
 internal class ProtectedFloatTest {
 
@@ -21,6 +22,11 @@ internal class ProtectedFloatTest {
 
     private val maxProtectedFloat = ProtectedFloat(Float.MAX_VALUE)
     private val minProtectedFloat = ProtectedFloat(Float.MIN_VALUE)
+
+    @Test
+    fun `validates the transformation to protected value`() {
+        assertIs<ProtectedFloat>(primitiveFloat.toProtected())
+    }
 
     // Unary operators
     @Test

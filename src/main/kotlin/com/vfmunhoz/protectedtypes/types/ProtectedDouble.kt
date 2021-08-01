@@ -92,6 +92,8 @@ value class ProtectedDouble(val value: Double) : Comparable<ProtectedDouble> {
     override fun toString(): String = value.obfuscate()
 }
 
+fun Double.toProtected() = ProtectedDouble(this)
+
 // Primitive + protected
 operator fun Double.plus(protectedValue: ProtectedByte): Double = this + protectedValue.value
 operator fun Double.plus(protectedValue: ProtectedShort): Double = this + protectedValue.value

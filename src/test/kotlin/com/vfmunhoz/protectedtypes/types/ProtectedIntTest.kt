@@ -2,6 +2,7 @@ package com.vfmunhoz.protectedtypes.types
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertIs
 
 internal class ProtectedIntTest {
 
@@ -21,6 +22,11 @@ internal class ProtectedIntTest {
 
     private val maxProtected = ProtectedInt(Int.MAX_VALUE)
     private val minProtected = ProtectedInt(Int.MIN_VALUE)
+
+    @Test
+    fun `validates the transformation to protected value`() {
+        assertIs<ProtectedInt>(primitiveInt.toProtected())
+    }
 
     // Unary operators
     @Test
