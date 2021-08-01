@@ -14,15 +14,15 @@ With the [inline classes](https://kotlinlang.org/docs/inline-classes.html) it's 
 
 The [inline classes](https://kotlinlang.org/docs/inline-classes.html) were relased on `Kotlin 1.5.0` so you won't be able to use it with older Kotlin versions. 
 
-> *Note:* The inline classes functionalities are being heavily discussed [here](https://github.com/Kotlin/KEEP/issues/237).
+> *Note:* The inline classes are being heavily discussed [here](https://github.com/Kotlin/KEEP/issues/237).
 
 ## How to use
 
 The library has been designed to have the smallest impact on your code, most of the time it should be seamless the usage of the `protected-types` on your code.
 
-### Integer Types
+### Numeric Types
 
-There's a wrapper for every integer type available and the `protected-types` makes sure the behavior during the computations is the same as [Kotlin's numeric types](https://kotlinlang.org/docs/basic-types.html).
+There's a value class wrapper for every integer type available, and the library makes sure the behavior during the computations is the same as [Kotlin's numeric types](https://kotlinlang.org/docs/basic-types.html).
 
 The integer wrappers are:
 
@@ -30,13 +30,43 @@ The integer wrappers are:
 - ProtectedShort
 - ProtectedInt
 - ProtectedLong
-
-### Float Types
-
-The floating wrappers are:
-
 - ProtectedFloat
-- Protected Double
+- ProtectedDouble
+
+If you try to print a value of any protected numeric type the half of the value will be obfuscated with the `#` and by default characters `-` and `.` will be preserved.
+
+```kotlin
+fun main() {
+    val protectedInt = -(100.toProtected())
+    val protectedDouble = 10.01.toProtected()
+
+    println(protectedInt)
+    println(protectedDouble)
+}
+```
+
+The snippet above will output:
+
+```text
+-1##
+10.##
+```
+
+> *Note:* Although the `-` and `.` are not obfuscated for numeric types the still count as a char in the resulting string.
+
+For each of the types you`re able to perform the same operations as their native types having the same results even if the result of the operation is greater than the type supports.
+
+The library supports operations with native types and protected types in any order, but the result type will always be the type of the first value.
+
+```kotlin
+fun main() {
+    val nativeInt = 10
+    val protectedInt = 11.toProtected()
+    
+    val anotherNativeInt: Int = nativeInt + protectedInt
+    val anotherProtectedInt: ProtectedInt = protectedInt + nativeInt
+}
+```
 
 ### String Type
 
