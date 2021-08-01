@@ -19,7 +19,6 @@ class ProtectedString(
 
     private fun maskWithSplit() = StringBuilder().let { builder ->
         value.split(splitToken!!).forEach { slice ->
-            builder.append(splitToken)
             builder.append(maskValue(slice, slice.length / 2, slice.length - 1))
         }
 

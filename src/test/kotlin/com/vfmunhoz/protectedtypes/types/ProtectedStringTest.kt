@@ -75,7 +75,6 @@ internal class ProtectedStringTest {
 
         val builder = StringBuilder()
         testString.split(" ").forEach {
-            builder.append(" ")
             builder.append(it.replaceFrom(it.length / 2, it.length - 1, "*"))
         }
 
