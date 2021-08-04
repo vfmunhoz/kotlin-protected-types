@@ -1,9 +1,10 @@
 package com.vfmunhoz.protectedtypes.types
 
+import com.fasterxml.jackson.annotation.JsonValue
 import com.vfmunhoz.protectedtypes.extensions.replaceFrom
 
 class ProtectedString(
-    val value: String,
+    @JsonValue val value: String,
     private val splitToken: String? = null,
     private val replaceToken: String = "*",
     private val ignores: Set<Char> = emptySet()

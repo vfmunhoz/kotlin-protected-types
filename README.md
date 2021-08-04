@@ -143,3 +143,29 @@ fun main() {
 ```
 
 > *Note:* The custom values for `splitToken`, `replaceToken` and `ignores` from the first `ProtectedString` will be propagated to the concat result.
+
+### Json serialization support
+
+The library supports serialization using [Jackson](https://github.com/FasterXML/jackson) version `2.12` or superior.
+
+```groovy
+implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
+```
+
+```kotlin
+data class Person(val name: ProtectedString, val age: ProtectedInt)
+
+fun main() {
+    val person = Person("John Doe".toProtected(), 31.toProtected())
+
+    println(jacksonObjectMapper().registerKotlinModule().writeValueAsString(person))
+    println()
+    println(person)
+}
+```
+
+```text
+{"name":"John Doe","age":31}
+
+Person(name=John****, age=3#)
+```

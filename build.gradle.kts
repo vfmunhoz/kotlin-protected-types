@@ -13,6 +13,8 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
 
+    compileOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
+
     testImplementation(kotlin("test"))
 }
 
