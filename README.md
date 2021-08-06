@@ -152,7 +152,7 @@ The library supports serialization using [Jackson](https://github.com/FasterXML/
 implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
 ```
 
-Since [Jackson](https://github.com/FasterXML/jackson) uses reflection to parse the entities to json and the `protected-types` don't change the value until it needs the serialization works smoothly.
+Since [Jackson](https://github.com/FasterXML/jackson) uses reflection to parse the entities to json, and the `protected-types` don't change the value until it needs, the serialization works smoothly.
 
 ```kotlin
 data class Person(val name: ProtectedString, val age: ProtectedInt)
