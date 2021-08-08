@@ -12,6 +12,7 @@ import com.vfmunhoz.protectedtypes.types.ProtectedLong
 import com.vfmunhoz.protectedtypes.types.ProtectedShort
 import com.vfmunhoz.protectedtypes.types.ProtectedString
 import com.vfmunhoz.protectedtypes.types.toProtected
+import kotlin.test.assertIs
 
 class JacksonJsonSerializationTest {
 
@@ -79,5 +80,19 @@ class JacksonJsonSerializationTest {
         val jsonValue = parser.writeValueAsString(protectedString)
 
         assertEquals("\"$primitiveString\"", jsonValue)
+    }
+
+    @Test
+    fun `parse string to json with the protected types`() {
+        val entity = parser.readValue(testEntityJson, TestEntity::class.java)
+
+        assertIs<TestEntity>(entity)
+        assertEquals(primitiveByte, entity.byteValue.value)
+        assertEquals(primitiveShort, entity.shortValue.value)
+        assertEquals(primitiveInt, entity.integerValue.value)
+        assertEquals(primitiveLong, entity.longValue.value)
+        assertEquals(primitiveFloat, entity.floatValue.value)
+        assertEquals(primitiveDouble, entity.doubleValue.value)
+        assertEquals(primitiveString, entity.stringValue.value)
     }
 }
