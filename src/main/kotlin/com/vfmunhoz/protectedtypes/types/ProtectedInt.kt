@@ -1,9 +1,10 @@
 package com.vfmunhoz.protectedtypes.types
 
+import com.fasterxml.jackson.annotation.JsonValue
 import com.vfmunhoz.protectedtypes.extensions.obfuscate
 
 @JvmInline
-value class ProtectedInt(val value: Int) : Comparable<ProtectedInt> {
+value class ProtectedInt(@JsonValue val value: Int) : Comparable<ProtectedInt> {
 
     operator fun unaryPlus(): ProtectedInt = ProtectedInt(value.unaryPlus())
     operator fun unaryMinus(): ProtectedInt = ProtectedInt(value.unaryMinus())

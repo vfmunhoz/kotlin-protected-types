@@ -1,9 +1,10 @@
 package com.vfmunhoz.protectedtypes.types
 
+import com.fasterxml.jackson.annotation.JsonValue
 import com.vfmunhoz.protectedtypes.extensions.obfuscate
 
 @JvmInline
-value class ProtectedDouble(val value: Double) : Comparable<ProtectedDouble> {
+value class ProtectedDouble(@JsonValue val value: Double) : Comparable<ProtectedDouble> {
 
     operator fun unaryPlus(): ProtectedDouble = ProtectedDouble(value.unaryPlus())
     operator fun unaryMinus(): ProtectedDouble = ProtectedDouble(value.unaryMinus())
