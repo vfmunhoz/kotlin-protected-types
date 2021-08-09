@@ -2,6 +2,7 @@ package com.vfmunhoz.protectedtypes.serialization
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertIs
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import com.vfmunhoz.protectedtypes.types.ProtectedByte
@@ -12,7 +13,6 @@ import com.vfmunhoz.protectedtypes.types.ProtectedLong
 import com.vfmunhoz.protectedtypes.types.ProtectedShort
 import com.vfmunhoz.protectedtypes.types.ProtectedString
 import com.vfmunhoz.protectedtypes.types.toProtected
-import kotlin.test.assertIs
 
 class JacksonJsonSerializationTest {
 
@@ -48,7 +48,7 @@ class JacksonJsonSerializationTest {
 
     private val testEntity = TestEntity(primitiveByte, primitiveShort, primitiveInt, primitiveLong, primitiveFloat, primitiveDouble, primitiveString)
 
-    private val testEntityJson = """{"byteValue":10,"shortValue":12,"integerValue":14,"longValue":16,"floatValue":18.2,"doubleValue":20.8,"stringValue":"Hello json parser!"}"""
+    private val testEntityJson = """{"byteValue":$primitiveByte,"shortValue":$primitiveShort,"integerValue":$primitiveInt,"longValue":$primitiveLong,"floatValue":$primitiveFloat,"doubleValue":$primitiveDouble,"stringValue":"$primitiveString"}"""
 
     @Test
     fun `validate the parse of protected types to json`() {
