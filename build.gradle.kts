@@ -3,11 +3,19 @@ plugins {
     `maven-publish`
 }
 
-group = "com.vfmunhoz"
+group = "com.github.vfmunhoz"
 version = "1.0.0"
 
 repositories {
     mavenCentral()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["kotlin"])
+        }
+    }
 }
 
 dependencies {
