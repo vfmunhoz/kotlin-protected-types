@@ -68,6 +68,8 @@ fun main() {
 }
 ```
 
+> *Note:* For any protected type it's possible to get the original value back accessing the `.value` property.
+
 ### String Type
 
 For strings the library doesn't follow the same principle as for numeric wrappers using [inline classes](https://kotlinlang.org/docs/inline-classes.html), this decision has been made considering that up to this moment the support to have functions with the same name as the original value class in use is still in discussion for future releases.
