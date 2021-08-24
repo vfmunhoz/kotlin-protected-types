@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
 }
 
-group = "com.github.vfmunhoz"
+group = "io.github.vfmunhoz"
 version = "1.0.0"
 
 repositories {
