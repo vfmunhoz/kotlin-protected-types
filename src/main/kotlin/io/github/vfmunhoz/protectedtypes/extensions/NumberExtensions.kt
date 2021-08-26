@@ -1,4 +1,4 @@
-package com.vfmunhoz.protectedtypes.extensions
+package io.github.vfmunhoz.protectedtypes.extensions
 
 import kotlin.math.floor
 

@@ -1,16 +1,16 @@
-package com.vfmunhoz.protectedtypes.types
+package io.github.vfmunhoz.protectedtypes.types
 
 import com.fasterxml.jackson.annotation.JsonValue
-import com.vfmunhoz.protectedtypes.extensions.obfuscate
+import io.github.vfmunhoz.protectedtypes.extensions.obfuscate
 
 @JvmInline
-value class ProtectedByte(@JsonValue val value: Byte) : Comparable<ProtectedByte> {
+value class ProtectedShort(@JsonValue val value: Short) : Comparable<ProtectedShort> {
 
     operator fun unaryPlus(): ProtectedInt = ProtectedInt(value.unaryPlus())
     operator fun unaryMinus(): ProtectedInt = ProtectedInt(value.unaryMinus())
 
-    operator fun inc(): ProtectedByte = ProtectedByte(value.inc())
-    operator fun dec(): ProtectedByte = ProtectedByte(value.dec())
+    operator fun inc(): ProtectedShort = ProtectedShort(value.inc())
+    operator fun dec(): ProtectedShort = ProtectedShort(value.dec())
 
     // Plus
     operator fun plus(other: Byte): ProtectedInt = ProtectedInt(value + other)
@@ -49,7 +49,7 @@ value class ProtectedByte(@JsonValue val value: Byte) : Comparable<ProtectedByte
     operator fun times(other: Long): ProtectedLong = ProtectedLong(value * other)
     operator fun times(other: Float): ProtectedFloat = ProtectedFloat(value * other)
     operator fun times(other: Double): ProtectedDouble = ProtectedDouble(value * other)
-
+    
     operator fun times(other: ProtectedByte): ProtectedInt = this.times(other.value)
     operator fun times(other: ProtectedShort): ProtectedInt = this.times(other.value)
     operator fun times(other: ProtectedInt): ProtectedInt = this.times(other.value)
@@ -87,50 +87,50 @@ value class ProtectedByte(@JsonValue val value: Byte) : Comparable<ProtectedByte
     operator fun rem(other: ProtectedFloat): ProtectedFloat = this.rem(other.value)
     operator fun rem(other: ProtectedDouble): ProtectedDouble = this.rem(other.value)
 
-    operator fun compareTo(other: Byte): Int = value.compareTo(other)
-    override operator fun compareTo(other: ProtectedByte): Int = compareTo(other.value)
+    operator fun compareTo(other: Short): Int = value.compareTo(other)
+    override operator fun compareTo(other: ProtectedShort): Int = compareTo(other.value)
 
     override fun toString(): String = value.obfuscate()
 }
 
-fun Byte.toProtected() = ProtectedByte(this)
+fun Short.toProtected() = ProtectedShort(this)
 
 // Primitive + protected
-operator fun Byte.plus(protectedValue: ProtectedByte): Int = this + protectedValue.value
-operator fun Byte.plus(protectedValue: ProtectedShort): Int = this + protectedValue.value
-operator fun Byte.plus(protectedValue: ProtectedInt): Int = this + protectedValue.value
-operator fun Byte.plus(protectedValue: ProtectedLong): Long = this + protectedValue.value
-operator fun Byte.plus(protectedValue: ProtectedFloat): Float = this + protectedValue.value
-operator fun Byte.plus(protectedValue: ProtectedDouble): Double = this + protectedValue.value
+operator fun Short.plus(protectedValue: ProtectedByte): Int = this + protectedValue.value
+operator fun Short.plus(protectedValue: ProtectedShort): Int = this + protectedValue.value
+operator fun Short.plus(protectedValue: ProtectedInt): Int = this + protectedValue.value
+operator fun Short.plus(protectedValue: ProtectedLong): Long = this + protectedValue.value
+operator fun Short.plus(protectedValue: ProtectedFloat): Float = this + protectedValue.value
+operator fun Short.plus(protectedValue: ProtectedDouble): Double = this + protectedValue.value
 
 // Primitive + protected
-operator fun Byte.minus(protectedValue: ProtectedByte): Int = this - protectedValue.value
-operator fun Byte.minus(protectedValue: ProtectedShort): Int = this - protectedValue.value
-operator fun Byte.minus(protectedValue: ProtectedInt): Int = this - protectedValue.value
-operator fun Byte.minus(protectedValue: ProtectedLong): Long = this - protectedValue.value
-operator fun Byte.minus(protectedValue: ProtectedFloat): Float = this - protectedValue.value
-operator fun Byte.minus(protectedValue: ProtectedDouble): Double = this - protectedValue.value
+operator fun Short.minus(protectedValue: ProtectedByte): Int = this - protectedValue.value
+operator fun Short.minus(protectedValue: ProtectedShort): Int = this - protectedValue.value
+operator fun Short.minus(protectedValue: ProtectedInt): Int = this - protectedValue.value
+operator fun Short.minus(protectedValue: ProtectedLong): Long = this - protectedValue.value
+operator fun Short.minus(protectedValue: ProtectedFloat): Float = this - protectedValue.value
+operator fun Short.minus(protectedValue: ProtectedDouble): Double = this - protectedValue.value
 
 // Primitive + protected
-operator fun Byte.times(protectedValue: ProtectedByte): Int = this * protectedValue.value
-operator fun Byte.times(protectedValue: ProtectedShort): Int = this * protectedValue.value
-operator fun Byte.times(protectedValue: ProtectedInt): Int = this * protectedValue.value
-operator fun Byte.times(protectedValue: ProtectedLong): Long = this * protectedValue.value
-operator fun Byte.times(protectedValue: ProtectedFloat): Float = this * protectedValue.value
-operator fun Byte.times(protectedValue: ProtectedDouble): Double = this * protectedValue.value
+operator fun Short.times(protectedValue: ProtectedByte): Int = this * protectedValue.value
+operator fun Short.times(protectedValue: ProtectedShort): Int = this * protectedValue.value
+operator fun Short.times(protectedValue: ProtectedInt): Int = this * protectedValue.value
+operator fun Short.times(protectedValue: ProtectedLong): Long = this * protectedValue.value
+operator fun Short.times(protectedValue: ProtectedFloat): Float = this * protectedValue.value
+operator fun Short.times(protectedValue: ProtectedDouble): Double = this * protectedValue.value
 
 // Primitive + protected
-operator fun Byte.div(protectedValue: ProtectedByte): Int = this / protectedValue.value
-operator fun Byte.div(protectedValue: ProtectedShort): Int = this / protectedValue.value
-operator fun Byte.div(protectedValue: ProtectedInt): Int = this / protectedValue.value
-operator fun Byte.div(protectedValue: ProtectedLong): Long = this / protectedValue.value
-operator fun Byte.div(protectedValue: ProtectedFloat): Float = this / protectedValue.value
-operator fun Byte.div(protectedValue: ProtectedDouble): Double = this / protectedValue.value
+operator fun Short.div(protectedValue: ProtectedByte): Int = this / protectedValue.value
+operator fun Short.div(protectedValue: ProtectedShort): Int = this / protectedValue.value
+operator fun Short.div(protectedValue: ProtectedInt): Int = this / protectedValue.value
+operator fun Short.div(protectedValue: ProtectedLong): Long = this / protectedValue.value
+operator fun Short.div(protectedValue: ProtectedFloat): Float = this / protectedValue.value
+operator fun Short.div(protectedValue: ProtectedDouble): Double = this / protectedValue.value
 
 // Primitive + protected
-operator fun Byte.rem(protectedValue: ProtectedByte): Int = this % protectedValue.value
-operator fun Byte.rem(protectedValue: ProtectedShort): Int = this % protectedValue.value
-operator fun Byte.rem(protectedValue: ProtectedInt): Int = this % protectedValue.value
-operator fun Byte.rem(protectedValue: ProtectedLong): Long = this % protectedValue.value
-operator fun Byte.rem(protectedValue: ProtectedFloat): Float = this % protectedValue.value
-operator fun Byte.rem(protectedValue: ProtectedDouble): Double = this % protectedValue.value
+operator fun Short.rem(protectedValue: ProtectedByte): Int = this % protectedValue.value
+operator fun Short.rem(protectedValue: ProtectedShort): Int = this % protectedValue.value
+operator fun Short.rem(protectedValue: ProtectedInt): Int = this % protectedValue.value
+operator fun Short.rem(protectedValue: ProtectedLong): Long = this % protectedValue.value
+operator fun Short.rem(protectedValue: ProtectedFloat): Float = this % protectedValue.value
+operator fun Short.rem(protectedValue: ProtectedDouble): Double = this % protectedValue.value

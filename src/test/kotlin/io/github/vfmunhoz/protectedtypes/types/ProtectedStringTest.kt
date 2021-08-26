@@ -1,6 +1,6 @@
-package com.vfmunhoz.protectedtypes.types
+package io.github.vfmunhoz.protectedtypes.types
 
-import com.vfmunhoz.protectedtypes.extensions.replaceFrom
+import io.github.vfmunhoz.protectedtypes.extensions.replaceFrom
 import org.junit.jupiter.api.assertAll
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -1,7 +1,7 @@
-package com.vfmunhoz.protectedtypes.types
+package io.github.vfmunhoz.protectedtypes.types
 
 import com.fasterxml.jackson.annotation.JsonValue
-import com.vfmunhoz.protectedtypes.extensions.replaceFrom
+import io.github.vfmunhoz.protectedtypes.extensions.replaceFrom
 
 class ProtectedString(
     @JsonValue val value: String,

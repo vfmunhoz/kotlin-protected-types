@@ -1,4 +1,4 @@
-package com.vfmunhoz.protectedtypes.extensions
+package io.github.vfmunhoz.protectedtypes.extensions
 
 fun String.replaceFrom(start: Int, end: Int, replacement: CharSequence, ignores: Set<Char> = emptySet()): String {
     if(start > end) throw throw IndexOutOfBoundsException("End index ($end) is less than start index ($start).")

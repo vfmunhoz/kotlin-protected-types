@@ -1,7 +1,7 @@
-package com.vfmunhoz.protectedtypes.types
+package io.github.vfmunhoz.protectedtypes.types
 
 import com.fasterxml.jackson.annotation.JsonValue
-import com.vfmunhoz.protectedtypes.extensions.obfuscate
+import io.github.vfmunhoz.protectedtypes.extensions.obfuscate
 
 @JvmInline
 value class ProtectedDouble(@JsonValue val value: Double) : Comparable<ProtectedDouble> {

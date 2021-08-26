@@ -1,4 +1,4 @@
-package com.vfmunhoz.protectedtypes.types
+package io.github.vfmunhoz.protectedtypes.types
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

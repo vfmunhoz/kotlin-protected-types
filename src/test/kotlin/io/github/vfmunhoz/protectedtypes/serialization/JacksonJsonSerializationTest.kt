@@ -1,18 +1,18 @@
-package com.vfmunhoz.protectedtypes.serialization
+package io.github.vfmunhoz.protectedtypes.serialization
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import com.vfmunhoz.protectedtypes.types.ProtectedByte
-import com.vfmunhoz.protectedtypes.types.ProtectedDouble
-import com.vfmunhoz.protectedtypes.types.ProtectedFloat
-import com.vfmunhoz.protectedtypes.types.ProtectedInt
-import com.vfmunhoz.protectedtypes.types.ProtectedLong
-import com.vfmunhoz.protectedtypes.types.ProtectedShort
-import com.vfmunhoz.protectedtypes.types.ProtectedString
-import com.vfmunhoz.protectedtypes.types.toProtected
+import io.github.vfmunhoz.protectedtypes.types.ProtectedByte
+import io.github.vfmunhoz.protectedtypes.types.ProtectedDouble
+import io.github.vfmunhoz.protectedtypes.types.ProtectedFloat
+import io.github.vfmunhoz.protectedtypes.types.ProtectedInt
+import io.github.vfmunhoz.protectedtypes.types.ProtectedLong
+import io.github.vfmunhoz.protectedtypes.types.ProtectedShort
+import io.github.vfmunhoz.protectedtypes.types.ProtectedString
+import io.github.vfmunhoz.protectedtypes.types.toProtected
 
 class JacksonJsonSerializationTest {
 
