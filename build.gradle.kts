@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.vfmunhoz"
-version = "1.0.0"
+version = "1.0.0-SNAPSHOT"
 
 val sonatypeUsername: String? = System.getenv("SONATYPE_USERNAME")
 val sonatypePassword: String? = System.getenv("SONATYPE_PASSWORD")
