@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.vfmunhoz"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0"
 
 val snapshotVersion: String =
     if(project.hasProperty("snapshotVersion")) project.findProperty("snapshotVersion").toString()
@@ -55,6 +55,10 @@ publishing {
 
             if(snapshotVersion == "true" && !version.toString().endsWith("SNAPSHOT")) {
                 throw Exception("To publish a snapshot the version must end with -SNAPSHOT")
+            }
+
+            if(snapshotVersion == "false" && version.toString().endsWith("SNAPSHOT")) {
+                throw Exception("To publish the release the version must not end with -SNAPSHOT")
             }
 
             url = if (snapshotVersion == "true") snapshotsRepoUrl else releasesRepoUrl
