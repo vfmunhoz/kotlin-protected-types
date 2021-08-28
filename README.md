@@ -20,6 +20,20 @@ The [inline classes](https://kotlinlang.org/docs/inline-classes.html) were relas
 
 The library has been designed to have the smallest impact on your code, most of the time it should be seamless the usage of the `protected-types` on your code.
 
+### Gradle configuration
+
+You should just have the library in your `dependencies` block and the `mavenCentral` repository.
+
+```kotlin
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("io.github.vfmunhoz:kotlin-protected-types:1.0.0")
+}
+```
+
 ### Numeric Types
 
 There's a value class wrapper for every integer type available, and the library makes sure the behavior during the computations is the same as [Kotlin's numeric types](https://kotlinlang.org/docs/basic-types.html).
