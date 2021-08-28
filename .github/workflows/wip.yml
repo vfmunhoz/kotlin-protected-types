@@ -10,7 +10,7 @@ on:
       - '**/.gitignore'
       - './github/**'
       - '!./github/workflow/snapshot.yml'
-  pull_requests:
+  pull_request:
     branches:
       - '*'
 
