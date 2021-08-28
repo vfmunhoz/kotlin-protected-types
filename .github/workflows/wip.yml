@@ -11,6 +11,8 @@ on:
       - './github/**'
       - '!./github/workflow/snapshot.yml'
   pull_requests:
+    branches:
+      - '*'
 
 jobs:
   snapshot:
