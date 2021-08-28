@@ -8,6 +8,8 @@ plugins {
 group = "io.github.vfmunhoz"
 version = "1.0.0-SNAPSHOT"
 
+val snapshotVersion: String by project
+
 val sonatypeUsername: String? = System.getenv("SONATYPE_USERNAME")
 val sonatypePassword: String? = System.getenv("SONATYPE_PASSWORD")
 val repositoryId: String? = System.getenv("SONATYPE_REPOSITORY_ID")
@@ -49,7 +51,7 @@ publishing {
             val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
             val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
 
-            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
+            url = if (snapshotVersion == "true") snapshotsRepoUrl else releasesRepoUrl
 
             credentials {
                 username = sonatypeUsername

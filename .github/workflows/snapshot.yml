@@ -1,6 +1,15 @@
-name: Kotlin CI with Gradle
+name: Snapshot workflow
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'snapshot/*'
+    paths-ignore:
+      - '**.md'
+      - '**.adoc'
+      - '**/.gitignore'
+      - './github/**'
+      - '!./github/workflow/snapshot.yml'
 
 jobs:
   snapshot:
@@ -16,9 +25,10 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Publish
-        run: ./gradlew publishAllPublicationsToOss
+        run: ./gradlew publishAllPublicationsToOss -PsnapshotVersion=true
         env:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           GPG_PRIVATE_PASSWORD: ${{ secrets.GPG_PRIVATE_PASSWORD }}
+
