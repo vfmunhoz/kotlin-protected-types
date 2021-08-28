@@ -32,6 +32,11 @@ val javadocJar = tasks.register<Jar>("javadocJar") {
     from(dokkaOutputDir)
 }
 
+val sourcesJar = tasks.register<Jar>("sourcesJar") {
+    archiveClassifier.set("sources")
+    from(sourceSets.getByName("main").allSource)
+}
+
 repositories {
     mavenCentral()
 }
@@ -72,11 +77,8 @@ publishing {
         }
 
         withType<MavenPublication> {
-            artifacts {
-                archives(javadocJar) {
-                    builtBy(javadocJar)
-                }
-            }
+            artifact(javadocJar.get())
+            artifact(sourcesJar.get())
 
             pom {
                 name.set("Kotlin ProtectedTypes")
