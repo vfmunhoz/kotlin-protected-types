@@ -53,10 +53,6 @@ publishing {
             val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
             val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
 
-            if(snapshotVersion == "true" && !version.toString().endsWith("SNAPSHOT")) {
-                throw Exception("To publish a snapshot the version must end with -SNAPSHOT")
-            }
-
             if(snapshotVersion == "false" && version.toString().endsWith("SNAPSHOT")) {
                 throw Exception("To publish the release the version must not end with -SNAPSHOT")
             }
