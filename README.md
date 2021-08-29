@@ -1,5 +1,10 @@
 # Kotlin Protected Types
 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/vfmunhoz/kotlin-protected-types/Release%20workflow)
+![GitHub last commit](https://img.shields.io/github/last-commit/vfmunhoz/kotlin-protected-types)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/vfmunhoz/kotlin-protected-types)
+![GitHub](https://img.shields.io/github/license/vfmunhoz/kotlin-protected-types)
+
 Unintentionally having personal data making it's way to application's log,  may give a reasonable amount of problems for any company nowadays, and cleaning up all the log messages after the log collection is probably a heavily processing and timing consumption process.
 
 Considering the possible scenarios to avoid personal data from being logged and sent to observability tools, it's feasible to change the data before outputting it to the log appender just by overriding the `toString()` calls from fields with personal data.
