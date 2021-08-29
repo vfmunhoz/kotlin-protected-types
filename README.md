@@ -1,9 +1,14 @@
 # Kotlin Protected Types
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/vfmunhoz/kotlin-protected-types/Release%20workflow)
-![GitHub last commit](https://img.shields.io/github/last-commit/vfmunhoz/kotlin-protected-types)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/vfmunhoz/kotlin-protected-types)
-![GitHub](https://img.shields.io/github/license/vfmunhoz/kotlin-protected-types)
+<p align="center">
+  <p align="center">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/vfmunhoz/kotlin-protected-types/Release%20workflow">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vfmunhoz/kotlin-protected-types">
+    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/vfmunhoz/kotlin-protected-types">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/vfmunhoz/kotlin-protected-types">
+    <img alt="GitHub" src="https://img.shields.io/github/license/vfmunhoz/kotlin-protected-types">
+  </p>
+</p>
 
 Unintentionally having personal data making it's way to application's log,  may give a reasonable amount of problems for any company nowadays, and cleaning up all the log messages after the log collection is probably a heavily processing and timing consumption process.
 
