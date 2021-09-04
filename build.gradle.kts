@@ -6,17 +6,44 @@ plugins {
 }
 
 group = "io.github.vfmunhoz"
-version = "1.0.0"
+version = "1.0.0-SNAPSHOT"
 
-val snapshotVersion: String =
-    if(project.hasProperty("snapshotVersion")) project.findProperty("snapshotVersion").toString()
-    else "true"
-
+val sonatypeReleaseRepo: String by project
+val sonatypeSnapshotRepo: String by project
 val sonatypeUsername: String? = System.getenv("SONATYPE_USERNAME")
 val sonatypePassword: String? = System.getenv("SONATYPE_PASSWORD")
-val repositoryId: String? = System.getenv("SONATYPE_REPOSITORY_ID")
+val sonatypeRepositoryId: String? = System.getenv("SONATYPE_REPOSITORY_ID")
+
+val gpgPrivateKey: String? = System.getenv("GPG_PRIVATE_KEY")
+val gpgPrivatePassword: String? = System.getenv("GPG_PRIVATE_PASSWORD")
 
 val dokkaOutputDir = "$buildDir/dokka"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(kotlin("stdlib"))
+    implementation(kotlin("reflect"))
+
+    compileOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
+
+    testImplementation(kotlin("test"))
+    testImplementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
+
+    dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.5.0")
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+
+// Suppressing test compile warnings since we intentionally
+// cause an overflow on arithmetic operation for integer types.
+tasks.compileTestKotlin {
+    kotlinOptions.suppressWarnings = true
+}
 
 tasks.getByName<org.jetbrains.dokka.gradle.DokkaTask>("dokkaHtml") {
     outputDirectory.set(file(dokkaOutputDir))
@@ -37,14 +64,10 @@ val sourcesJar = tasks.register<Jar>("sourcesJar") {
     from(sourceSets.getByName("main").allSource)
 }
 
-repositories {
-    mavenCentral()
-}
-
 signing {
     useInMemoryPgpKeys(
-        System.getenv("GPG_PRIVATE_KEY"),
-        System.getenv("GPG_PRIVATE_PASSWORD")
+        gpgPrivateKey,
+        gpgPrivatePassword
     )
 
     sign(publishing.publications)
@@ -55,14 +78,10 @@ publishing {
         maven {
             name = "oss"
 
-            val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            val repoUri = if (version.toString().endsWith("SNAPSHOT")) { sonatypeSnapshotRepo }
+                          else { sonatypeReleaseRepo }
 
-            if(snapshotVersion == "false" && version.toString().endsWith("SNAPSHOT")) {
-                throw Exception("To publish the release the version must not end with -SNAPSHOT")
-            }
-
-            url = if (snapshotVersion == "true") snapshotsRepoUrl else releasesRepoUrl
+            url = uri(repoUri)
 
             credentials {
                 username = sonatypeUsername
@@ -107,26 +126,4 @@ publishing {
             }
         }
     }
-}
-
-dependencies {
-    implementation(kotlin("stdlib"))
-    implementation(kotlin("reflect"))
-
-    compileOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
-
-    testImplementation(kotlin("test"))
-    testImplementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
-
-    dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.5.0")
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-// Suppressing test compile warnings since we intentionally
-// cause an overflow on arithmetic operation for integer types.
-tasks.compileTestKotlin {
-    kotlinOptions.suppressWarnings = true
 }
