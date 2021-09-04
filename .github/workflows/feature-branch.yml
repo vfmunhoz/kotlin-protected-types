@@ -33,7 +33,7 @@ jobs:
           tar xzf /tmp/sv4git.zip
           chmod +x git-sv
       - name: Get Version
-        id: getVersion
+        id: get-version
         run: |
           VERSION="$(git sv next-version)-SNAPSHOT-$(git rev-parse --short HEAD)"
           echo "VERSION=$VERSION"
@@ -46,4 +46,4 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build
-        run: ./gradlew build -Pversion=${{steps.getVersion.outputs.version}}
+        run: ./gradlew build -Pversion=${{steps.get-version.outputs.version}}

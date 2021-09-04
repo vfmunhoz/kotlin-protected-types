@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.vfmunhoz"
-version = "1.0.0-SNAPSHOT"
+version = "0.0.1-SNAPSHOT"
 
 val sonatypeReleaseRepo: String by project
 val sonatypeSnapshotRepo: String by project
