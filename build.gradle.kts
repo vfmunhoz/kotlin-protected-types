@@ -78,7 +78,7 @@ publishing {
         maven {
             name = "oss"
 
-            val repoUri = if (version.toString().endsWith("SNAPSHOT")) { sonatypeSnapshotRepo }
+            val repoUri = if (version.toString().contains("SNAPSHOT")) { sonatypeSnapshotRepo }
                           else { sonatypeReleaseRepo }
 
             url = uri(repoUri)
