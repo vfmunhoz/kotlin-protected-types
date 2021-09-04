@@ -1,4 +1,4 @@
-name: Release workflow
+name: After release published
 
 on:
   release:
@@ -18,10 +18,9 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build and publish to maven central
-        run: ./gradlew publishAllPublicationsToOss -PsnapshotVersion=false
+        run: ./gradlew publishAllPublicationsToOss
         env:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           GPG_PRIVATE_PASSWORD: ${{ secrets.GPG_PRIVATE_PASSWORD }}
-

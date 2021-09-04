@@ -1,0 +1,49 @@
+name: On push to a feature branch
+
+on:
+  push:
+    branches:
+      - '*'
+    paths-ignore:
+      - '**.md'
+      - '**.adoc'
+      - '**/.gitignore'
+      - './github/**'
+      - '!./github/workflow/feature-branch.yml'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install packages
+        run: |
+          sudo apt update
+          sudo apt install -y git
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Get sv4git
+        run: |
+          wget -O /tmp/sv4git.zip https://github.com/bvieira/sv4git/releases/download/v2.4.0/git-sv_2.4.0_linux_amd64.tar.gz
+          cd /usr/local/bin
+          tar xzf /tmp/sv4git.zip
+          chmod +x git-sv
+      - name: Get Version
+        id: get-version
+        run: |
+          VERSION="$(git sv next-version)-SNAPSHOT-$(git rev-parse --short HEAD)"
+          echo "VERSION=$VERSION"
+          echo "::set-output name=version::$VERSION"
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build
+        run: ./gradlew build -Pversion=${{steps.get-version.outputs.version}}
