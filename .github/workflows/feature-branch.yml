@@ -45,5 +45,5 @@ jobs:
         run: chmod +x gradlew
       - name: Build
         run: |
-          echo "building version ${steps.getVersion.outputs.version}
+          echo "building version ${steps.getVersion.outputs.version}"
           ./gradlew build -Pversion=${{steps.getVersion.outputs.version}}
