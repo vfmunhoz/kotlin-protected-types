@@ -44,6 +44,4 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build
-        run: |
-          echo "building version ${steps.getVersion.outputs.version}"
-          ./gradlew build -Pversion=${{steps.getVersion.outputs.version}}
+        run: ./gradlew build -Pversion=${{steps.getVersion.outputs.version}}
