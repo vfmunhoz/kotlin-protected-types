@@ -24,6 +24,8 @@ jobs:
           sudo apt install -y git
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Get sv4git
         run: |
           wget -O /tmp/sv4git.zip https://github.com/bvieira/sv4git/releases/download/v2.4.0/git-sv_2.4.0_linux_amd64.tar.gz
